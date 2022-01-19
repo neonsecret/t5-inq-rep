@@ -1,0 +1,7 @@
+Article_Id	Sentence_Id	Sentence	Span	Question	Span_Start_Position	Span_End_Position
+1	1	The nation ’ s largest gun - rights group is taking some Texans to task over their headline - generating demonstrations advocating the legal , open carrying of weapons .	to task	What does \"to task\" mean?	13	15
+2	5	“ I consider this a top national security priority , ” Obama said .	consider	WHat are the other options?	2	3
+143	2	He has two more years at Texas A & M .	Texas A & M	What is his major?	6	10
+142	1	Emerson Electric Co . and Robert Bosch G . m . b .	G . m . b	what is gmb?	7	12
+151	5	The title of chief executive officer isn ' t used .	isn ' t used	Why is the term CEO not used?	6	10
+153	1	Good grief ! Charlie Brown is selling out .	selling	Why is Charlie Brown selling out?	6	7
