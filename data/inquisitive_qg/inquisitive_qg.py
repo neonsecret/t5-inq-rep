@@ -52,6 +52,10 @@ TEST_ARTICLE_IDS = list(itertools.chain(range(101, 151), range(501, 551), range(
 DEV_AND_TEST_IDS = DEV_ARTICLE_IDS + TEST_ARTICLE_IDS
 TRAIN_ARTICLE_IDS = [id_ for id_ in ALL_ARTICLE_IDS if id_ not in DEV_AND_TEST_IDS]
 
+QG_FORMATS = [
+    "highlight"
+]
+
 
 class InquisitiveQgConfig(nlp.BuilderConfig):
     """BuilderConfig for INQUISITIVE."""
@@ -71,7 +75,8 @@ class InquisitiveQg(nlp.GeneratorBasedBuilder):
 
     VERSION = nlp.Version("1.0.0")
     BUILDER_CONFIGS = [
-        InquisitiveQgConfig(name="plain_text", version=nlp.Version("1.0.0", ""), description="plain_text"),
+        InquisitiveQgConfig(name="plain_text", version=nlp.Version("1.0.0", ""), description="plain_text",
+                            qg_format="highlight"),
     ]
 
     def _info(self):
@@ -95,7 +100,7 @@ class InquisitiveQg(nlp.GeneratorBasedBuilder):
             ),
             supervised_keys=None,
             homepage="https://github.com/wjko2/INQUISITIVE",
-            citation=_CITATION,
+            citation=_CITATION
         )
 
     def _split_generators(self, dl_manager):
@@ -177,8 +182,13 @@ class InquisitiveQg(nlp.GeneratorBasedBuilder):
                 #         "task": "qa"
                 #     }
                 # elif task == "qg":
+                # example = {
+                #     "source_text": article.replace(cols[3], "{hl_token} " + cols[3] + " {hl_token}"),
+                #     "target_text": cols[4],
+                #     "task": "qg"
+                # }
                 example = {
-                    "source_text": "generate question: " + article,
+                    "source_text": cols[2].replace(cols[3], "{hl_token} " + cols[3] + " {hl_token}"),
                     "target_text": cols[4],
                     "task": "qg"
                 }
